@@ -1,14 +1,29 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Campaigns</h1>
-
-<div id="campaigns">
-  <% @campaigns.each do |campaign| %>
-    <%= render campaign %>
-    <p>
-      <%= link_to "Show this campaign", campaign %>
-    </p>
-  <% end %>
+<div class="px-4 sm:px-6 lg:px-8">
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <h1 class="text-xl font-bold">Campaigns</h1>
+    </div>
+  </div>
+  <div class="mt-8 flow-root">
+    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+        <table class="min-w-full">
+          <thead class="bg-white">
+            <tr>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Title</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">State</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white">
+            <% @campaigns.each do |status, campaigns| %>
+              <tr class="border-t border-gray-200">
+                <th colspan="5" scope="colgroup" class="bg-gray-50 py-2 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-3"><%= status.humanize %></th>
+              </tr>
+              <%= render 'campaign_group', campaigns: campaigns %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New campaign", new_campaign_path %>

@@ -4,6 +4,9 @@ class Campaign < ApplicationRecord
 
   enum :state, { draft: 0, published: 1, archived: 2 }
 
+  scope :ordered_position_asc, -> { order(position: :asc) }
+  scope :ordered_position_desc, -> { order(position: :desc) }
+
   private
 
   def set_position

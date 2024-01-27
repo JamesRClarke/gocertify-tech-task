@@ -3,7 +3,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns or /campaigns.json
   def index
-    @campaigns = Campaign.all
+    @campaigns = Campaign.all.order(:position).group_by{ |c| c.state }
   end
 
   # GET /campaigns/1 or /campaigns/1.json

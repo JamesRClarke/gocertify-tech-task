@@ -1,0 +1,6 @@
+<% campaigns.each do |campaign| %>
+    <tr class="border-t border-gray-300">
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= campaign.title %></td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm <%= table_state_colour(state: campaign.state) %>"><%= campaign.state %></td>
+    </tr>
+<% end %>
