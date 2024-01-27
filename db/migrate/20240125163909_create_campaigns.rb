@@ -5,7 +5,7 @@ class CreateCampaigns < ActiveRecord::Migration[7.0]
       t.text :description
       t.integer :state, default: 0
       t.datetime :published_at, null: true
-      t.integer :position
+      t.integer :position, null: true
 
       t.timestamps
     end
