@@ -1,6 +1,9 @@
 <% campaigns.each do |campaign| %>
-    <tr class="border-t border-gray-300">
+    <tr class="border-t border-gray-300 hover:bg-gray-100">
         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= campaign.title %></td>
-        <td class="whitespace-nowrap px-3 py-4 text-sm <%= table_state_colour(state: campaign.state) %>"><%= campaign.state %></td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm <%= campaign_state_colour(state: campaign.state) %>"><%= campaign.state.humanize %></td>
+        <td class="relative whitespace-nowrap text-indigo-500 py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
+            <%= link_to "View", campaign_path(campaign), data: { turbo_frame: "modal", action: 'click->modal#open'} %>
+        </td>
     </tr>
 <% end %>

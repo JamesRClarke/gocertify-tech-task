@@ -1,0 +1,22 @@
+<%= render TurboModal.new(title: "Campaign") do %>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="order-1">
+      <h1 class="pb-1 font-semibold border-gray-300 border-b">Title</h1>
+      <h2 class="pt-1"><%= @campaign.title %></h2>
+    </div>
+    <div class="order-3 md:order-2">
+      <h1 class="pb-1 font-semibold border-gray-300 border-b">Current state</h1>
+      <h2 class="<%= campaign_state_colour(state: @campaign.state) %> pt-1"><%= @campaign.state.humanize %></h2>
+    </div>
+
+    <div class="order-2 md:order-3">
+      <h1 class="pb-1 font-semibold border-gray-300 border-b">Description</h1>
+      <p class="pt-1"><%= @campaign.description %></p>
+    </div>
+
+    <div class="order-4">
+      <h1 class="pb-1 font-semibold border-gray-300 border-b">Published at</h1>
+      <p class="pt-1"><%= published_at_formatted(time: @campaign.published_at)%></p>
+    </div>
+  </div>
+<% end %>

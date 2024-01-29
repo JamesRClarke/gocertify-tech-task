@@ -3,12 +3,11 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns or /campaigns.json
   def index
-    @campaigns = Campaign.all.order(:position).group_by{ |c| c.state }
+    @campaigns = sorted_campaigns
   end
 
   # GET /campaigns/1 or /campaigns/1.json
-  def show
-  end
+  def show; end
 
   # GET /campaigns/new
   def new
@@ -58,13 +57,21 @@ class CampaignsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_campaign
-      @campaign = Campaign.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def campaign_params
-      params.require(:campaign).permit(:title, :description, :state, :published_at, :position)
-    end
+  def sorted_campaigns
+    # Probably want to build a Query class instead
+    campaigns = Campaign.all.select(:id, :title, :state).order(:position).group_by{ |c| c.state }
+    display_order = ['published', 'draft', 'archived']
+    campaigns.sort_by { |elem| display_order.index(elem.first) }
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_campaign
+    @campaign = Campaign.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def campaign_params
+    params.require(:campaign).permit(:title, :description, :state, :published_at, :position)
+  end
 end
