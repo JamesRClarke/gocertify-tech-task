@@ -10,6 +10,7 @@ This repository contains the GoCertify Tech Task, a Ruby on Rails.
   - [Approach](#approach)
     - [Planning](#planning)
   - [Self Evaluation](#self-evaluation)
+  - [Loom Video](#loom-video)
 
 
 ## Installation
@@ -86,3 +87,6 @@ A few things given more time and trying to extend on I would do:
 
   - Only wrote test for something which was not specified on the requirments, my curiosity took over and wanted to implement a solution for this. Could've spent more time on the other things to improve overall quality. I did think tests for all code written in a 2 hour time frame might not be the best use of the time, so I decided against, however, in production 'environment' tests would've been my first action.
 
+## Loom Video
+
+[Loom Video Link](https://www.loom.com/share/79d39adae051491092bfe84e308944dd)
